@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 /**
 * Week 7 day 13
 * Assignment 1. Practising TDD
@@ -10,11 +10,13 @@ public class LibraryImpl implements Library{
 	private String library;
 	private static int totalIds = 0;
 	private HashMap<String, Integer> mapUserIds;
+	private ArrayList<Book> bookList;
 	
 	//constructor
-	public LibraryImpl(){
-		this.library = "Westmount Public Library";
+	public LibraryImpl(String library){
+		this.library = library;
 		this.mapUserIds = new HashMap<String, Integer>();
+		this.bookList = new ArrayList<Book>();
 	}
 	
 	public String getLibrary(){
@@ -42,12 +44,24 @@ public class LibraryImpl implements Library{
 		return 5;
 	}
 	
-	public void addBook(String title, String author){}
-	
-	public Book takeBook(String title){
-		return new BookImpl("hey", "you");
+	public void addBook(String author, String title){
+		Book newBook = new BookImpl(author, title);
+		bookList.add(newBook);
 	}
 	
-	public void returnBook(Book book){}
+	public Book takeBook(String title){
+		for(Book storedBook: bookList){
+			String storedTitle = storedBook.getTitle();
+			if(storedTitle.equals(title)){
+				storedBook.setLoanStatus(true);
+				return storedBook;
+			}
+		}
+		return null;
+	}
+	
+	public void returnBook(Book book){
+		book.setLoanStatus(false);
+	}
 	
 }

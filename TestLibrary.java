@@ -16,7 +16,7 @@ public class TestLibrary{
 	@Before
 	public void initialize(){
 		testUser = new UserImpl("Larry David");
-		library = new LibraryImpl();
+		library = new LibraryImpl("Westmount Public Library");
 	}
 	
 	@Test
@@ -33,5 +33,26 @@ public class TestLibrary{
 	public void testsGetId(){
 		library.register("Hank");
 		assertEquals(2, library.getId("Holly"));
+	}
+	
+	@Test
+	public void testsAddBook(){
+		library.addBook("Barry", "ABC");
+		assertNotNull(library.takeBook("ABC"));
+	}
+	
+	@Test
+	public void testsTakeBook(){
+		library.addBook("Barry", "ABC");
+		assertTrue(library.takeBook("ABC").isTaken());
+		
+	}
+	
+	@Test
+	public void testsReturnBook(){
+		library.addBook("Barry", "ABC");
+		Book testBook = library.takeBook("ABC");
+		library.returnBook(testBook);
+		assertFalse(testBook.isTaken());
 	}
 }

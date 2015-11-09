@@ -13,4 +13,6 @@ public interface Book{
 	String getTitle();
 	
 	boolean isTaken();
+	
+	void setLoanStatus(boolean status);
 }

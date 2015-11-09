@@ -27,12 +27,12 @@ public class BookImpl implements Book{
 		return this.title;
 	}
 	
+	public boolean isTaken(){
+		return this.loanStatus;
+	}
+	
 	//setter
 	public void setLoanStatus(boolean status){
 		this.loanStatus = status;
-	}
-	
-	public boolean isTaken(){
-		return this.loanStatus;
 	}
 }
