@@ -5,13 +5,17 @@ import java.util.List;
 * 4. Binary Search
 */
 
-public class BinarySearch{
+public class BinarySearch<T>{
 
-	private List<Object> list;
+	private List<T> list;
 	
+	
+	public BinarySearch(List<T> list){
+		this.list = list;
+	}
 	
 	public boolean isEmpty(){
-		if(list == null){
+		if(list.isEmpty()){
 			return true;
 		}
 		return false;
@@ -20,8 +24,10 @@ public class BinarySearch{
 	public boolean contains(Object object){
 		if(this.isEmpty()){
 			return false;
+		}else if(list.get(list.size()/2).equals(object)){
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	

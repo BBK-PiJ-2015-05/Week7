@@ -1,26 +1,35 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class TestBinary{
 	
+	List<Integer> testList;
 	Integer testInt;
-	BinarySearch testList;
+	BinarySearch testSearch;
 	
 	@Before
 	public void initialiser(){
 		testInt = 2;
-		testList = new BinarySearch();
+		testList = new ArrayList<Integer>();
+		testSearch = new BinarySearch(testList);
 	}
 
 	@Test
 	public void testsBinaryListIsEmpty(){
-		
-		assertTrue(testList.isEmpty());
+		assertTrue(testSearch.isEmpty());
 	}
 	
 	@Test
 	public void testsReturnElementInListEmpty(){
-		assertFalse(testList.contains(testInt));
+		assertFalse(testSearch.contains(testInt));
+	}
+	
+	@Test
+	public void testsMiddleElementIsObject(){
+		testList.add(testInt);
+		assertTrue(testSearch.contains(testInt));
 	}
 	
 }
