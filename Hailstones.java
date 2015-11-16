@@ -29,6 +29,4 @@ public class Hailstones {
 			return collatz((3 * n) + 1);
 		}
 	}
-}	
-	
-		
+}
